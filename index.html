@@ -29,9 +29,10 @@
 <header class="topo-elegante">
   <div class="container-header-elegante">
     <div class="logo-area">
-      <img src="https://drive.google.com/thumbnail?id=1T8uBVmig-r10ze8pbjRG9J6KI5t_gVLQ" height="190px">
+      <img class="logo-grande" src="https://drive.google.com/thumbnail?id=1T8uBVmig-r10ze8pbjRG9J6KI5t_gVLQ" height="190px">
     </div>
 
+    
     <!-- menu que sera aberto no mobile -->
     <nav class="menu-elegante" id="menu-mobile">
       <a href="#sobre">Sobre</a>
@@ -268,52 +269,62 @@
 
 <!-- scripts -->
 <script>
-  window.addEventListener("scroll", () => {
+  document.addEventListener("DOMContentLoaded", function () {
     const header = document.querySelector(".topo-elegante");
     const logo = document.querySelector(".logo-grande");
+    const hamburger = document.querySelector(".hamburger");
+    const menu = document.querySelector(".menu-elegante");
+    const painel = document.getElementById("painel-diferenciais");
+    const botao = document.getElementById("botao-toggle");
+    const logoArea = document.querySelector(".logo-area");
 
-    if (window.scrollY > 20) {
-      header.classList.add("scrolling");
-      logo.style.height = "60px";
-    } else {
-      header.classList.remove("scrolling");
-      logo.style.height = "80px";
+
+    // Menu Mobile: toggle no clique do hambúrguer (apenas no mobile)
+    if (hamburger && menu) {
+      hamburger.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          hamburger.classList.toggle("ativo");
+          menu.classList.toggle("ativo");
+        }
+      });
+
+      // Fechar o menu ao clicar em um item (mobile)
+      const menuLinks = menu.querySelectorAll("a");
+      menuLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            hamburger.classList.remove("ativo");
+            menu.classList.remove("ativo");
+          }
+        });
+      });
     }
-  });
 
-  const hamburger = document.getElementById('hamburger-btn');
-  const menu = document.getElementById('menu-mobile');
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('ativo');
-    menu.classList.toggle('ativo');
-  });
-
-  const painel = document.getElementById("painel-diferenciais");
-  const botao = document.getElementById("botao-toggle");
-
-  painel.addEventListener("toggle", () => {
-    if (painel.open) {
-      botao.textContent = "Clique para ver menos";
-    } else {
-      botao.textContent = "Clique para exibir nossos diferenciais";
+    // Botão Diferenciais
+    if (painel && botao) {
+      painel.addEventListener("toggle", () => {
+        botao.textContent = painel.open
+          ? "Clique para ver menos"
+          : "Clique para exibir nossos diferenciais";
+      });
     }
-  });
 
-  // Voltar ao topo ao recarregar
-  window.addEventListener('load', function() {
+    // Clique no logo rola para o topo
+    if (logoArea) {
+      logoArea.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    }
+
+    // Voltar ao topo ao recarregar
     window.scrollTo(0, 0);
   });
-
-    const logo = document.querySelector('.logo-area');
-
-  logo.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 </script>
+
+
 
 
 
