@@ -45,14 +45,11 @@ body, html {
 }
 
 .logo-grande {
-  height: 30px; /* mantém altura real */
+  height: 130px; /* mantém altura real */
   transform: scale(1.2); /* aumenta visualmente */
   transform-origin: left center;
 }
 
-.logo-grande:hover {
-  transform: scale(1.05);
-}
 
 .header-menu a {
   font-size: 16px;
@@ -148,10 +145,7 @@ body, html {
 }
 
 
-.menu-elegante {
-  display: flex;
-  gap: 24px;
-}
+
 
 .menu-elegante a {
   font-size: 16px;
@@ -171,18 +165,7 @@ body, html {
 }
 
 /* ---------------- botão hambúrguer ---------------- */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 36px;
-  height: 28px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1100;
-  padding: 10px;
-}
+
 
 .hamburger span {
   height: 4px;
@@ -209,22 +192,17 @@ body, html {
     padding: 12px 0;
   }
 
-  .hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  background: white;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  cursor: pointer;
-  z-index: 1100;
-  gap: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
-  overflow: visible; /* evitar corte */
+  .logo-grande{
+    height: 90px;
+    
+  }
+  .icon-instagram{
+    margin: 0%;
+    gap: 0;
+  }
+  
+  .icon-social{
+    gap: 1px;
   }
 
   .hamburger span {
@@ -246,20 +224,7 @@ body, html {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-  .menu-elegante {
-  display: none;
-  flex-direction: column;
-  gap: 1rem;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: rgba(255, 255, 255, 0.15); /* mesma transparência do header */
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
+  
 
   .menu-elegante.ativo {
     display: flex;
@@ -587,28 +552,14 @@ body, html {
     display: none;
   }
 
-  .hamburger {
-    display: flex;
-    order: 2; 
-  }
+  
 
   .icon-instagram {
     order: 1; 
     margin-left: 12px;
   }
 
-  .menu-elegante {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    padding: 20px 0;
-    z-index: 999;
-  }
+  
 
   .menu-elegante.ativo {
     display: flex;
@@ -751,4 +702,71 @@ body, html {
   color: #212121; /* azul parecido com a cor das garantias */
   text-align: center;
   font-family: 'Roboto', sans-serif;
+}
+
+/* VISUAL PADRÃO (DESKTOP) */
+.menu-elegante {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+}
+
+/* VERSÃO MOBILE */
+@media (max-width: 768px) {
+  .menu-elegante {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-elegante.ativo {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 1100;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .hamburger span {
+    height: 3px;
+    width: 24px;
+    background-color: #686868;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.ativo span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.ativo span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.ativo span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 }
