@@ -193,7 +193,7 @@ body, html {
   }
 
   .logo-grande{
-    height: 90px;
+    max-height: 90px;
     
   }
   .icon-instagram{
